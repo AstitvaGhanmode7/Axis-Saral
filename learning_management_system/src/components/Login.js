@@ -63,16 +63,14 @@ axios.post(`${axios.defaults.baseURL}/auth`, { email, password })
         localStorage.getItem("token")
       );
 
-      if (role === "Development") {
-        navigate("/employees");
-      } else if (role === "Manager") {
+       if (role === "Manager") {
         navigate("/manager");
       } else if (role === "Hr") {
         navigate("/hr");
       } else if(role === "Admin") {
         navigate("/admin")
       } else{
-        setError("Invalid role received");
+        navigate("/employees")
       }
       //navigate("/employee"); // Replace "/dashboard" with your desired route
     } catch (error) {

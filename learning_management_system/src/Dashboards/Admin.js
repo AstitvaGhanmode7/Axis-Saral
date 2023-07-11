@@ -3,8 +3,8 @@ import Navbar from "../components/Navbar";
 import EmployeeNavbar from "./EmployeeNavbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../admin.css";
-
+//import "../admin.css";
+import "../Style.css";
 const Admin = () => {
   const [projects, setProjects] = useState([]);
   const [employee, setEmployee] = useState(null);
@@ -26,7 +26,7 @@ const Admin = () => {
         const name = localStorage.getItem("username");
 
         const response1 = await axios.get(
-          `http://localhost:8080/employee/Employee/getbyname/${name}`,
+          `http://localhost:9100/employee/Employee/getbyname/${name}`,
           config
         );
         console.log(response1.data);
