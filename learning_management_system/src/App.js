@@ -31,7 +31,6 @@ import ManagerProfile from "./Dashboards/ManagerProfile";
 import Newsfeed from "./Dashboards/Newsfeed";
 import HrFilesUpload from "./Dashboards/HrFilesUpload";
 import HrProfile from "./Dashboards/HrProfile";
-import AdminEmployees from "./Dashboards/AdminEmployees";
 
 function App() {
   return (
@@ -47,13 +46,6 @@ function App() {
           <Route exact path="/newsfeed" element={<Newsfeed />} />
           <Route exact path="/projects" element={<EmployeeProjects />} />
           <Route exact path="/employeedetails" element={<EmployeeDetails />} />
-          <Route exact path="/admin/employees/:empId" element={<AdminEmployees />} />
-         {/* <Route exact path="/admin/projects/:empId" element={<AdminProjects />} />
-          <Route exact path="/admin/stakeholders/:empId" element={<AdminStakeholder />} />
-          <Route exact path="/admin/owners/:empId" element={<AdminOwners/>} />
-          <Route exact path="/admin/projectAssign/:empId" element={<AdminProjectAssign/>} />
-          <Route exact path="/admin/newsfeed/:empId" element={<AdminNewsfeed />} />
-  <Route exact path="/admin/jobs/:empId" element={<AdminJobs/>} /> */}
           <Route
             exact
             path="/employeedocuments"

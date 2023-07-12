@@ -57,7 +57,7 @@ const ProjectAssign = () => {
             </ul>
           </div>
         </header>
-        <form className="project-assigned">
+        <form>
           {}
           <div className="mb-2">
             <label

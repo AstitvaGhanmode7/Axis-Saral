@@ -8,7 +8,7 @@ import Logo2 from "../gender/female.png";
 
 const EmployeeDetails = () => {
   const employeeService = new EmployeeService();
-  const [showAllEmp, setShowAllEmp] = useState(true);
+  const [showAllEmp, setShowAllEmp] = useState(false);
   const [empData, setempData] = useState([]);
   const [showIndEmp, setShowIndEmp] = useState(false);
   const [showAllManager, setShowAllmanager] = useState(false);

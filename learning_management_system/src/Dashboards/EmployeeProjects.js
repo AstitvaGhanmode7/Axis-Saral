@@ -79,179 +79,228 @@ const EmployeeProjects = () => {
       setAllProjects(res.data);
     });
   };
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+
+  const handleAccordionClick = () => {
+    setIsAccordionOpen((prev) => !prev);
+  };
 
   return (
     <div>
-  <EmployeeSidebar />
-  <br />
-  <br />
-  <div className="window">
-    <h2 className="employeeproject">Employee Projects</h2>
-    <br />
-    <br />
-    <br />
-    <header>
-      <div className="navbar">
-        <ul className="links">
-          <li>
-            <a onClick={handleMyProjects}>My Projects</a>
-          </li>
+      <EmployeeSidebar />
+      <br />
+      <br />
+      <div className="window">
+        <h2 className="employeeproject">Employee Projects</h2>
+        <br />
+        <br />
+        <br />
+        <header>
+          <div className="navbar">
+            <ul className="links">
+              <li>
+                <a onClick={handleMyProjects}>My Projects</a>
+              </li>
 
-          <li>
-            <a onClick={handleAllProjects}>All Projects</a>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <div className="container container-pbutton"></div>
-    {showMyProjects && (
-      <div className="card-container">
-        {projects.map((project) => (
-          <div className="card" key={project.id}>
-            <div className="card-header">
-              <h3>{project.project.title}</h3>
-            </div>
-            <div className="card-body">
-              <p>{project.project.description}</p>
-              <p>Manager: {project.project.manager.name}</p>
-              <p>Start Date: {project.project.startDate}</p>
-              <p>End Date: {project.project.endDate}</p>
-              <p>Status: {project.project.status}</p>
-              <button
-                className="btn btn-success btn-button"
-                onClick={() => handleProjectDetails(project.project.proj_id)}
-              >
-                View Details
-              </button>
-            </div>
+              <li>
+                <a onClick={handleAllProjects}>All Projects</a>
+              </li>
+            </ul>
           </div>
-        ))}
+        </header>
+
+        <div className="project">
+          <h1 className="heading">Project Title</h1>
+          <div className="project-id">Project ID: [project ID]</div>
+          <div className="status">Status: [status]</div>
+          <div className="start-date">Start Date: [start date]</div>
+          <div className="start-end">End Date: [end date]</div>
+
+          <div className="another-accordion">
+            <button className="accordion" onClick={handleAccordionClick}>
+              Another Accordion
+            </button>
+            {isAccordionOpen && (
+              <div className="panel">
+                <div className="accordion-content">
+                  This is the content of the second accordion.
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="container container-pbutton"></div>
+        {showMyProjects && (
+          <>
+            <table className="table1-custom">
+              <thead className="thead1">
+                <tr>
+                  <th>Project ID</th>
+                  <th>Project Title</th>
+                  <th>Project Description</th>
+                  <th>Manager ID</th>
+                  <th>Manager Name</th>
+                  <th>Manager MailId</th>
+                  <th>Hr Id</th>
+                  <th>Hr Name</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map((project) => (
+                  <tr key={project.id}>
+                    <td>{project.project.proj_id}</td>
+                    <td>{project.project.title}</td>
+                    <td>{project.project.description}</td>
+                    <td>{project.project.manager.emp_id}</td>
+                    <td>{project.project.manager.name}</td>
+                    <td>{project.project.manager.email}</td>
+                    <td>{project.project.hr.emp_id}</td>
+                    <td>{project.project.hr.name}</td>
+                    <td>{project.project.startDate}</td>
+                    <td>{project.project.endDate}</td>
+                    <td>{project.project.status}</td>
+                    <button
+                      className="btn btn-success btn-button"
+                      onClick={() =>
+                        handleProjectDetails(project.project.proj_id)
+                      }
+                    >
+                      View Details
+                    </button>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+        {showMyProjectDetails && (
+          <>
+            <h3
+              style={{
+                margin: 0,
+                padding: 0,
+                position: "absolute",
+                top: "12rem",
+                left: "10rem",
+              }}
+            >
+              Project Details
+            </h3>
+            <table className="table1-custom">
+              <thead className="thead-dark thead1">
+                <tr>
+                  <th>Project ID</th>
+                  <th>Project Title</th>
+                  <th>Project Description</th>
+                  <th>Manager ID</th>
+                  <th>Manager Name</th>
+                  <th>Manager MailId</th>
+                  <th>Hr Id</th>
+                  <th>Hr Name</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projData.map((pro) => (
+                  <tr key={pro.id}>
+                    <td>{pro.project.proj_id}</td>
+                    <td>{pro.project.title}</td>
+                    <td>{pro.project.description}</td>
+                    <td>{pro.project.manager.emp_id}</td>
+                    <td>{pro.project.manager.name}</td>
+                    <td>{pro.project.manager.email}</td>
+                    <td>{pro.project.hr.emp_id}</td>
+                    <td>{pro.project.hr.name}</td>
+                    <td>{pro.project.startDate}</td>
+                    <td>{pro.project.endDate}</td>
+                    <td>{pro.project.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <h3
+              style={{
+                margin: 0,
+                padding: 0,
+                position: "absolute",
+                top: "26rem",
+                left: "10rem",
+              }}
+            >
+              Employees Details
+            </h3>
+            <table className="table2-custom">
+              <thead className="thead-dark thead1">
+                <tr>
+                  <th>Serial NO</th>
+                  <th>Employee Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Address</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                {empData.map((emp, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{emp.name}</td>
+                    <td>{emp.email}</td>
+                    <td>{emp.role}</td>
+                    <td>{emp.address}</td>
+                    <td>{emp.contact}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+        {showAllProjects && (
+          <>
+            <table className="table1-custom">
+              <thead className="thead-dark thead1">
+                <tr>
+                  <th>Project ID</th>
+                  <th>Project Title</th>
+                  <th>Project Description</th>
+                  <th>Manager ID</th>
+                  <th>Manager Name</th>
+                  <th>Manager MailId</th>
+                  <th>Hr Id</th>
+                  <th>Hr Name</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allProjects.map((project) => (
+                  <tr key={project.id}>
+                    <td>{project.proj_id}</td>
+                    <td>{project.title}</td>
+                    <td>{project.description}</td>
+                    <td>{project.manager.emp_id}</td>
+                    <td>{project.manager.name}</td>
+                    <td>{project.manager.email}</td>
+                    <td>{project.hr.emp_id}</td>
+                    <td>{project.hr.name}</td>
+                    <td>{project.startDate}</td>
+                    <td>{project.endDate}</td>
+                    <td>{project.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
       </div>
-    )}
-    {showMyProjectDetails && (
-      <>
-        <h3
-          style={{
-            margin: 0,
-            padding: 0,
-            position: "absolute",
-            top: "12rem",
-            left: "10rem",
-          }}
-        >
-          Project Details
-        </h3>
-        <table className="table1-custom">
-          <thead className="thead-dark thead1">
-            <tr>
-              <th>Project ID</th>
-              <th>Project Title</th>
-              <th>Project Description</th>
-              <th>Manager ID</th>
-              <th>Manager Name</th>
-              <th>Manager MailId</th>
-              <th>Hr Id</th>
-              <th>Hr Name</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projData.map((pro) => (
-              <tr key={pro.id}>
-                <td>{pro.project.proj_id}</td>
-                <td>{pro.project.title}</td>
-                <td>{pro.project.description}</td>
-                <td>{pro.project.manager.emp_id}</td>
-                <td>{pro.project.manager.name}</td>
-                <td>{pro.project.manager.email}</td>
-                <td>{pro.project.hr.emp_id}</td>
-                <td>{pro.project.hr.name}</td>
-                <td>{pro.project.startDate}</td>
-                <td>{pro.project.endDate}</td>
-                <td>{pro.project.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <h3
-          style={{
-            margin: 0,
-            padding: 0,
-            position: "absolute",
-            top: "26rem",
-            left: "10rem",
-          }}
-        >
-          Employees Details
-        </h3>
-        <table className="table2-custom">
-          <thead className="thead-dark thead1">
-            <tr>
-              <th>Serial NO</th>
-              <th>Employee Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Address</th>
-              <th>Contact</th>
-            </tr>
-          </thead>
-          <tbody>
-            {empData.map((emp, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{emp.name}</td>
-                <td>{emp.email}</td>
-                <td>{emp.role}</td>
-                <td>{emp.address}</td>
-                <td>{emp.contact}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
-    )}
-    {showAllProjects && (
-      <>
-        <table className="table1-custom">
-          <thead className="thead-dark thead1">
-            <tr>
-              <th>Project ID</th>
-              <th>Project Title</th>
-              <th>Project Description</th>
-              <th>Manager ID</th>
-              <th>Manager Name</th>
-              <th>Manager MailId</th>
-              <th>Hr Id</th>
-              <th>Hr Name</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allProjects.map((project) => (
-              <tr key={project.id}>
-                <td>{project.proj_id}</td>
-                <td>{project.title}</td>
-                <td>{project.description}</td>
-                <td>{project.manager.emp_id}</td>
-                <td>{project.manager.name}</td>
-                <td>{project.manager.email}</td>
-                <td>{project.hr.emp_id}</td>
-                <td>{project.hr.name}</td>
-                <td>{project.startDate}</td>
-                <td>{project.endDate}</td>
-                <td>{project.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
-    )}
-  </div>
-</div>
+    </div>
   );
 };
 

@@ -409,3 +409,75 @@ a.article:hover {
   left: 30rem;
   bottom: 20rem;
 }
+
+/* PROJECT DETAILS */
+
+.heading {
+  position: relative;
+  left: 20rem;
+  top: 3rem;
+}
+
+.project-id {
+  position: relative;
+  left: 4rem;
+  top: 4rem;
+}
+
+.status {
+  position: relative;
+  left: 35rem;
+  top: 3rem;
+}
+
+.start-date {
+  position: relative;
+  left: 4rem;
+  top: 6rem;
+}
+
+.start-end {
+  position: relative;
+  left: 35rem;
+  top: 4.8rem;
+}
+
+.project {
+  width: 55rem;
+  position: relative;
+  background-color: white;
+  left: 10rem;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.accordion {
+  background-color: white;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 54rem;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+}
+
+.project-id,
+.status,
+.start-date,
+.start-end {
+  margin-bottom: 10px;
+}
+
+.another-accordion {
+  margin-top: 20px;
+}

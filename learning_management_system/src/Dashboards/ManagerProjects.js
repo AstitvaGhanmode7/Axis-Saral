@@ -106,7 +106,7 @@ const ManagerProjects = () => {
             <h3 className="text-center">Add Project</h3>
             <div className="d-flex justify-content-center align-items-center 100-w">
               <div className="form-container rounded bg-white">
-                <form>
+                <form className="project1">
                   <div className="mb-2">
                     <label htmlFor="title">Title</label>
                     <input
